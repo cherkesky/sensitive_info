@@ -18,6 +18,7 @@ class Patient:
     self.__insurance = insurance
     self.__first_name = first_name
     self.__last_name = last_name
+    self.__address = address
 
   @property
   def social_security_number(self):
@@ -32,24 +33,36 @@ class Patient:
     except AttributeError:
       return 0
       
-  @property
-  def first_name(self):
-    try:
-      return self.__first_name+ " " + self.__last_name
-    except AttributeError:
-      return 0
-  @property
-  def last_name(self):
-    try:
-      return self.__first_name+ " " + self.__last_name
-    except AttributeError:
-      return 0
+  # @property
+  # def first_name(self):
+  #   try:
+  #     return self.__first_name+ " " + self.__last_name
+  #   except AttributeError:
+  #     return 0
+  # @property
+  # def last_name(self):
+  #   try:
+  #     return self.__first_name+ " " + self.__last_name
+  #   except AttributeError:
+  #     return 0
   @property
   def full_name(self):
     try:
       return self.__first_name+ " " + self.__last_name
     except AttributeError:
       return 0
+
+  @property
+  def address(self):
+    try:
+      return self.__address
+    except AttributeError:
+      return 0
+      
+  @address.setter
+  def address(self, address):
+    self.__address = address
+
 
 cashew = Patient("097-23-1003", "08/13/92", "7001294103", "Daniela", "Agnoletti", "500 Infinity Way")
 
@@ -63,8 +76,11 @@ cashew = Patient("097-23-1003", "08/13/92", "7001294103", "Daniela", "Agnoletti"
 print(cashew.social_security_number)   # "097-23-1003"
 
 # # These two statements should output nothing
-print(cashew.first_name)
-print(cashew.last_name)
-print(cashew.full_name)
+# print(cashew.first_name)
+# print(cashew.last_name)
 # # But this should output the full name
-# print(cashew.full_name)   # "Daniela Agnoletti"
+print(cashew.full_name)   # "Daniela Agnoletti"
+
+cashew.address = "123 Rainbow St"
+
+print(cashew.address)
